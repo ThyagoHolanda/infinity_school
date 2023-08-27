@@ -5,8 +5,6 @@ if temperatura <= 37:
 else:
     cancela = False
 
-match cancela:
-    case True:
-        print("Liberar")
-    case False:
-        print("Bloquear")
+print(f"True para liberado\n"
+      f"False para não liberado\n"
+      f"{cancela}")
