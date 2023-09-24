@@ -17,7 +17,7 @@ for i in range(0, 9):
 
 lista_join = list()
 
-lista_join += lista1[:3] + lista2[3:6] + lista3[6:]
+lista_join += lista1[:3] + lista2[3:-3] + lista3[6:]
 print(lista_join)
 
 # Agora utilizando um laço
