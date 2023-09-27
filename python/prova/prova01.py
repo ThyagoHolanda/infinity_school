@@ -18,7 +18,7 @@ email_user = input("Digite seu email: ")
 senha_user = input("Digite sua senha: ")
 
 while senha_user != senha or email_user != email:
-   print("Senha ou email incorretos. Tente novamente.")
+   print("Email ou senha incorretos. Tente novamente.")
    email_user = input("Digite a senha: ")
    senha_user = input("Digite o email: ")
 
