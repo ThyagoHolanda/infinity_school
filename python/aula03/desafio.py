@@ -7,6 +7,7 @@ while True:
           "3 - Apagar pacientes;\n"
           "0 - Finalizar sistema;\n")
     opcao = int(input("Digite a opção desejada: "))
+
     if opcao == 1:
         nome = input("Digite o nome do paciente: ")
         idade = int(input("Digite a idade do paciente: "))
@@ -24,9 +25,12 @@ while True:
         print("-"*30)
 
     elif opcao == 3:
-        id_apagar = int(input("Digite o id do paciente que deseja apagar: "))
+        id_apagar = int(input("Digite o Cod do paciente que deseja apagar: "))
         del pacientes[id_apagar]
 
     elif opcao == 0:
         print("Sistema finalizado!")
         break
+    
+    else:
+        print("Opção inválida!")
