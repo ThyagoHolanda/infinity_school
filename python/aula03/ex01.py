@@ -1,11 +1,20 @@
-# Dicionario com nome de idades de pessoas
-idade = {"Thyago": 18, "Maria": 20, "Pedro": 21, "Joao": 18, "Hely": 19, "Joaquim": 17}
+''# Dicionario com nome de idades de pessoas
+idade = {"thyago": 18, 
+         "maria": 20, 
+         "pedro": 21, 
+         "joao": 18, 
+         "hely": 19, 
+         "joaquim": 17}
 
-nome = input("Digite seu nome: ")
+# Recebe o nome da pessoa a ser consultada
+nome = input("Digite seu nome: ").lower()
 
+# Verifica se o nome está no dicionário de idades
 if nome in idade:
+    # Imprime a idade da pessoa
     print(f"{nome} tem {idade[nome]} anos.")
 else:
+    # Imprime uma mensagem de erro caso o nome não exista no dicionário
     print(f"{nome} não tem idade cadastrada.")
 
 
