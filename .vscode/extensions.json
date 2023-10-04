@@ -3,6 +3,8 @@
         "aminer.codegeex",
         "ms-ceintl.vscode-language-pack-pt-br",
         "tabnine.tabnine-vscode",
-        "pkief.material-icon-theme"
+        "pkief.material-icon-theme",
+        "rocketseat.theme-omni",
+        "vscode-icons-team.vscode-icons"
     ]
 }
