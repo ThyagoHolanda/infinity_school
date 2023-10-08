@@ -1,15 +1,35 @@
+'''
 def conversao(seg):
     hora = round((seg/60)/60)
     minuto = round((seg/60)%60)
     segundo = round((seg%60)%60)
 
-    tempo = f"{hora}h {minuto}m {segundo}s"
-    print(tempo)
+    return f"{hora}h {minuto}m {segundo}s"
 
 
 seg = int(input("Tempo em segundos: "))
-conversao(seg)
+tempo = conversao(seg)
+print(tempo)
 
+print("="*30)
+
+'''
+
+
+def conversao(seg):
+    hora = seg//3600
+    minuto = (seg//60)%60
+    segundo = (seg%60)%60
+
+    return hora, minuto, segundo
+
+
+seg = int(input("Tempo em segundos: "))
+
+hora, min, seg = conversao(seg)
+
+print("="*30)
+print(f"{hora}:{min}:{seg}")
 
 
 '''
