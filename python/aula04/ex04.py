@@ -1,5 +1,5 @@
 def esfera(raio):
-    return 4 / 3 * 3.14 * (raio ** 2)
+    return 4 / 3 * 3.14 * (raio ** 3)
 
 
 raio = int(input("Digite o raio da esfera: "))
