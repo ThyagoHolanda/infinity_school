@@ -1,4 +1,4 @@
-def remove_produto():
+def remove_produto(estoque, nome):
     a = 1
 
 
@@ -130,3 +130,7 @@ if escolha == 1:
     produto["preco"] = 6.09  # float(input("Informe o preço do produto: "))
     produto["categoria"] = "mercearia" # input("Qual a categoria desse produto: ")
     estoque = add_produto(estoque, produto)
+
+elif escolha == 2:
+    produto = dict()
+    produto["nome"] = "uva" # input("Qual nome do produto que deseja remover: ")
