@@ -33,7 +33,7 @@ def quantidade_ano_bissextos(ano_atual, ano):
     return acumulador
 
 
-def conversao(dia, mes, ano):
+def conversao_dias(dia, mes, ano):
     data_atual = datetime.date.today()
     ano_atual = data_atual.year
     mes_atual = data_atual.month
@@ -47,9 +47,16 @@ def conversao(dia, mes, ano):
     else:
         return False
 
+def conversao_horas_min_seg(dias):
+    
+    horas = dias * 24
+    min = horas * 60
+    seg = min *60
+    return 
 
 dia = int(input("Dia: "))
 mes = int(input("Mês: "))
 ano = int(input("Ano: "))
 
-print(conversao(dia, mes, ano))
+quantidade_dias = conversao_dias(dia, mes, ano)
+
