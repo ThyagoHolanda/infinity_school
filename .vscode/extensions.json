@@ -5,6 +5,7 @@
         "tabnine.tabnine-vscode",
         "pkief.material-icon-theme",
         "rocketseat.theme-omni",
-        "vscode-icons-team.vscode-icons"
+        "vscode-icons-team.vscode-icons",
+        "ms-python.autopep8"
     ]
 }
