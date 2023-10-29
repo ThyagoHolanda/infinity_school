@@ -7,16 +7,23 @@ escolha = int(input("1 - Somar\n"
                     "Escolha uma das opções acima: "))
 
 numeros = list()
-contador = 1
+
+n = int(input(f"Informe o 1º numero: "))
+numeros.append(n)
+
+n = int(input(f"Informe o 2º numero: "))
+numeros.append(n)
+
+contador = 3
 while True:
+    parar = input("Deseja para S/N: ").upper()
+    if parar == "N":
+        break
+    
     n = int(input(f"Informe o {contador}º numero: "))
     numeros.append(n)
     
     contador += 1
-    parar = input("Deseja para S/N: ").upper()
-    if parar == "N":
-        break
-
 
 match escolha:
     case 1:
