@@ -25,27 +25,12 @@ class Contas:
         self.saldo = saldo
         self.tipo = tipo
 
-        self.addconta()
-
-    def addconta(self):
-        global contas
-        global codigo
-
-        contas[codigo] = {
-            "titular": self.nome,
-            "saldo": self.saldo,
-            "tipo": self.tipo
-        }
-        codigo += 1
-
-    @staticmethod
-    def verificar_informacoes(numero):
-        print(f"Titular: {contas[numero]['titular']}\n"
-              f"Saldo: {contas[numero]['saldo']}\n"
-              f"Tipo: {contas[numero]['tipo']}")
+    def verificar_informacoes(self):
+        return self.nome, self.saldo, self.tipo
 
     def deposito(self, valor):
         self.saldo += valor
+        return f"Depósito de {valor} realizado. Novo saldo: {self.saldo}"
 
 
 class CC(Contas):
@@ -53,8 +38,11 @@ class CC(Contas):
         super().__init__(codigo, nome, saldo, tipo)
 
     def sacar(self, valor):
-        self.saldo -= valor
-
+        if self.saldo >= valor:
+            self.saldo -= valor
+            return f"Saque de {valor} realizado. Novo saldo: {self.saldo}"
+        else:
+            return "Saldo insuficiente para saque."
 
 class CP(Contas):
     def __init__(self, codigo, nome, saldo, tipo):
@@ -64,7 +52,7 @@ class CP(Contas):
         self.saldo += valor
 
 
-print("Precione enter para começar")
+input("Precione enter para começar\n")
 contas = {}
 codigo = 1
 while True:
@@ -74,32 +62,66 @@ while True:
           "4 - Depositar\n"
           "5 - Verificar informações\n"
           "0 - Sair")
-    escolha = int(input("Escolha uma das opções acima: "))
+    escolha = int(input("Escolha uma das opções acima: \n"))
 
     match escolha:
         case 1:
             nome = input("Informe o nome do titular da conta: ")
             saldo = 0.00
-            nova_CC = CC(codigo, nome, saldo, "CC")
-            print(contas)
-            
+            contas[codigo] = CC(codigo, nome, saldo, "CC")
+            codigo += 1
+
         case 2:
             nome = input("Informe o nome do titular da conta: ")
             saldo = 0.00
-            nova_CP = CP(codigo, nome, saldo, "CP")
-            print(contas)
-        
+            contas[codigo] = CP(codigo, nome, saldo, "CP")
+            codigo += 1
+
         case 3:
-            pass
-        
+            numero_conta = int(
+                input("Qual o numero da conta que deseja sacar: "))
+            if numero_conta in contas:
+                tipo = contas[numero_conta].verificar_informacoes()[2]
+                if tipo == "CC":
+                    valor = float(input("Qual o valor do saque: "))
+                    saque = contas[numero_conta].sacar(valor)
+                    print(saque)
+                else:
+                    print("Saque somente permitido para Contas Correntes!")
+                    input("Precione enter para continuar!")
+                    print("\n"*30)
+            else:
+                print("Conta não existe!")
+                input("Precione enter para continuar!")
+                print("\n"*30)
+
         case 4:
-            pass
-        
+            numero_conta = int(
+                input("Qual o numero da conta que deseja depositar: "))
+            if numero_conta in contas:
+                valor = float(input("Qual o valor do deposito: "))
+                deposito = contas[numero_conta].deposito(valor)
+                print(deposito)
+            else:
+                print("Conta não existe!")
+                input("Precione enter para continuar!")
+                print("\n"*30)
+
         case 5:
-            numero_conta = int(input("Qual o numero da conta que deseja verificar: "))
-            Contas.verificar_informacoes(numero_conta)
-            pass
-        
+            numero_conta = int(input("Qual o numero da conta que deseja verificar (0 para mostrar todas as contas): "))
+            if numero_conta <= 0:
+                for i in contas:
+                    verificar = contas[i].verificar_informacoes()
+                    print(f"\nNumero: {i}\n"
+                          f"Titular: {verificar[0]}\n"
+                          f"Saldo: {verificar[1]}\n"
+                          f"Tipo: {verificar[2]}\n")
+            else:
+                verificar = contas[numero_conta].verificar_informacoes()
+                print(f"\nTitular: {verificar[0]}\n"
+                    f"Saldo: {verificar[1]}\n"
+                    f"Tipo: {verificar[2]}\n")
+
         case 0:
             print("Programa fechado!")
             break
