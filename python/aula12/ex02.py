@@ -16,8 +16,6 @@ Quem utilizará esse sistema é um gerente, portanto, o sistema deve permitir qu
 ele crie uma conta-correte ou conta poupança nova e, que consiga utilizar
 todas as funções.
 """
-
-
 class Contas:
     # Initialize the class with the parameters of codigo, nome, saldo, and tipo
     def __init__(self, codigo, nome, saldo, tipo):
@@ -55,17 +53,16 @@ class CC(Contas):
 
 class CP(Contas):
     # Initialize the class with the parameters of codigo, nome, saldo, and tipo
-    def __init__(self, codigo, nome, saldo, tipo):
+    def __init__(self, codigo, nome, saldo, tipo, juros):
         super().__init__(codigo, nome, saldo, tipo)
+        self.juros = juros
 
     # Increase the saldo of the account
     def juros(self, valor):
         self.saldo += valor
 
-
-input("Precione enter para começar\n")
 # Ask the user to press enter to start the program
-input("Precipe enter para começar\n")
+input("Precione enter para começar\n")
 # Create an empty dictionary to store the accounts
 contas = {}
 # Create a variable to store the codigo
@@ -99,8 +96,9 @@ while True:
             nome = input("Informe o nome do titular da conta: ")
             # Set the initial balance to 0.00
             saldo = 0.00
+            juros = float(input("Digite o valor de juros da conta: "))
             # Add the account to the dictionary
-            contas[codigo] = CP(codigo, nome, saldo, "CP")
+            contas[codigo] = CP(codigo, nome, saldo, "CP", juros)
             # Increment the codigo
             codigo += 1
 
@@ -164,8 +162,7 @@ while True:
 
         case 5:
             # Ask the user to input the number of the account or 0 to show all accounts
-            numero_conta = int(input(
-                "Qual o numero da conta que deseja verificar (0 para mostrar todas as contas): "))
+            numero_conta = int(input("Qual o numero da conta que deseja verificar (0 para mostrar todas as contas): "))
             # Check if the user input is 0
             if numero_conta <= 0:
                 # Iterate through the dictionary and print the information of each account
